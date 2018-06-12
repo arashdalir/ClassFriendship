@@ -1,5 +1,5 @@
 .idea
 .idea/*
-composer.log
+composer.lock
 composer.phar
 vendor
