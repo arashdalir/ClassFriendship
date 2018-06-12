@@ -1,4 +1,4 @@
-# Psr3Log
+# ClassFriendship
 
 `ArashDalir/ClassFriendship` provides basic functionality needed to simulate class friendship like in c++. 
 ## Install
