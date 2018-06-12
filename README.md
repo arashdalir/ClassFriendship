@@ -5,7 +5,7 @@
 
 Use following command to add the repository to your project:
 
-	composer require ArashDalir/ClassFriendship
+	composer require arashdalir/php-classfriendship
 
 
 Or add following line to your composer.json:
@@ -13,7 +13,7 @@ Or add following line to your composer.json:
 ```json
 {
   "require": {
-     "arashdalir/classfriendship": "dev-master"
+     "arashdalir/php-classfriendship": "dev-master"
   }
 }
 ```
