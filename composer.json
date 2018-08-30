@@ -8,11 +8,11 @@
   ],
   "autoload": {
     "psr-4": {
-      "ArashDalir\\ClassFriendship\\": "./src"
+      "ArashDalir\\ClassFriendship\\": "./src/ClassFriendship"
     }
   },
   "require": {
-    "php": "^5.6"
+    "php": "^5.6|^7.0"
   },
   "description": "This library provides basic functionality needed to simulate class friendship as in C++."
 }
