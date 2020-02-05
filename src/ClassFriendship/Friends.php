@@ -94,19 +94,29 @@ trait Friends{
 	/**
 	 *
 	 * @param int $depth - indicates which caller in call-stack has to be considered for friendship -
-	 *                   DEFAULT: 3 -> getCaller() is called in __set and __get functions, which go through set() and get(), which means the real caller was 3 levels higher than current backtrace location
+	 *                   DEFAULT: 2 -> getCallerClass() is called either from `__set` and `__get` functions,or through `set()` and `get()`,
+	 *                   which means the real caller might be 2 or 3 levels higher than current backtrace location
 	 *
 	 * @return mixed
 	 */
-	function getCallerClass($depth = 3)
+	function getCallerClass($depth = 2)
 	{
-		$backtrace = debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS, $depth + 1);
-		return $backtrace[$depth]["class"];
+		$backtrace = debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS, $depth + 2);
+		$bt = $backtrace[$depth];
+
+		if($bt["class"] == $backtrace[$depth - 1]["class"])
+		{
+			if(in_array($bt["function"], array("__get", "__set")))
+			{
+				$bt = $backtrace[$depth + 1];
+			}
+		}
+		return $bt["class"];
 	}
 
 	function isFriendsWith($class, $friendship_type)
 	{
-		if ($class === static::class)
+		if($class === static::class)
 		{
 			return true;
 		}
